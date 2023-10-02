@@ -158,10 +158,32 @@ ul.info-text {
 }
 
 .info-text li h4 {
-  font-size: 20px;
+  font-size: 35px;
   margin-bottom: 25px;
+  color: #333;
+  font-weight: 300;
 }
 
-.info-text li p {
-  margin: 0;
+@media (max-width: 1000px) {
+  .info-text li {
+    flex-basis: 100%;
+    margin-bottom: 65px;
+  }
+  .info-text li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.footer {
+  background-image: url(assets/footer.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: -25%;
+}
+
+.footer h2 {
+  color: white;
+  font-weight: 900;
+  margin-top: -9%;
 }
