@@ -66,7 +66,7 @@ section {
 }
 
 .welcome-text .welcome-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .welcome-text .nikah {
@@ -75,7 +75,7 @@ section {
 }
 
 .welcome-text p {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin: -30px;
 }
 
@@ -122,7 +122,7 @@ section {
   border-radius: 16px;
   box-shadow: 0 0 10px 1px #00000040;
   backdrop-filter: blur(10px);
-  padding: 20px;
+  padding: 15px;
 }
 
 .time-left div span {
