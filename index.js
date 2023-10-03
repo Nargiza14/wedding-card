@@ -1,30 +1,22 @@
-function getRemainingTime(et) {
-  var dt = Date.parse(et) - Date.parse(new Date());
-  var seconds = Math.floor((dt / 1000) % 60);
-  var minutes = Math.floor((dt / 1000 / 60) % 60);
-  var hours = Math.floor((dt / (1000 * 60 * 60)) % 24);
-  var days = Math.floor(dt / (1000 * 60 * 60 * 24));
-  return { days, hours, minutes, seconds };
-}
+let deadline = new Date("oct 28, 2023 13:00:00").getTime();
+let x = setInterval(function () {
+  let now = new Date().getTime();
+  let t = deadline - now;
+  let days = Math.floor(t / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((t % (1000 * 60)) / 1000);
 
-function initRemainingTime(id, endTime) {
-  var clock = document.getElementById(id);
-  var daysSpan = clock.querySelector(".days");
-  var hoursSpan = clock.querySelector(".hours");
-  var minutesSpan = clock.querySelector(".minutes");
-  var secondsSpan = clock.querySelector(".seconds");
-  function updateRemainingTime() {
-    var t = getRemainingTime(endTime);
-    daysSpan.innerHTML = ("0" + t.days).slice(-2);
-    hoursSpan.innerHTML = ("0" + t.hours).slice(-2);
-    minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
-    if (t.days <= 0 && t.hours <= t.minutes <= 0 && t.seconds <= 0) {
-      clearInterval(timeInterval);
-    }
+  document.getElementById("day").innerHTML = days;
+  document.getElementById("hour").innerHTML = hours;
+  document.getElementById("minute").innerHTML = minutes;
+  document.getElementById("second").innerHTML = seconds;
+
+  if (t < 0) {
+    clearInterval(x);
+    document.getElementById("day").innerHTML = "0";
+    document.getElementById("hour").innerHTML = "0";
+    document.getElementById("minute").innerHTML = "0";
+    document.getElementById("second").innerHTML = "0";
   }
-  updateRemainingTime();
-  var timeInterval = setInterval(updateRemainingTime, 1000);
-}
-var timeForBigDay = new Date(Date.parse(new Date()) + 1 * 24 * 60 * 60 * 1000);
-initRemainingTime("reminder-clock", timeForBigDay);
+}, 1000);
